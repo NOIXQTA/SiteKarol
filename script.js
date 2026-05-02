@@ -340,6 +340,25 @@ function getSlotAvailability(dateIso, timeValue) {
   return { valid: true, reason: "available", slotId: slot.id || null };
 }
 
+function markSlotAsBooked(dateIso, timeValue) {
+  const normalizedTime = normalizeSlotValue(timeValue);
+  if (!dateIso || !normalizedTime) {
+    return false;
+  }
+
+  const existingOverride = getDateOverride(dateIso);
+  const nextBooked = [...new Set([...existingOverride.booked, normalizedTime])].sort();
+
+  scheduleConfig.dateOverrides[dateIso] = {
+    useCustomAvailable: existingOverride.useCustomAvailable,
+    available: [...existingOverride.available],
+    booked: nextBooked,
+  };
+
+  saveScheduleConfig();
+  return true;
+}
+
 function showBookingError(message) {
   if (!bookingError) {
     return;
@@ -721,6 +740,17 @@ whatsappForm?.addEventListener("submit", (event) => {
       </ul>
     `;
   }
+
+  markSlotAsBooked(data, hora);
+  selectedCalendarDate = new Date(`${data}T12:00:00`);
+  currentMonthDate = new Date(
+    selectedCalendarDate.getFullYear(),
+    selectedCalendarDate.getMonth(),
+    1
+  );
+  selectedAgendaButton = null;
+  selectedSlotText.textContent = `Creneau reserve : ${formattedDateLong} - ${hora}`;
+  refreshAgendaViews();
 
   if (whatsappLink) {
     whatsappLink.href = whatsappUrl;
