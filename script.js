@@ -1,4 +1,4 @@
-const whatsappNumber = "351910221393";
+const whatsappNumber = "330612347576";
 const scheduleStorageKey = "studioEleganceScheduleConfig";
 const ownerModeStorageKey = "studioEleganceOwnerMode";
 const ownerAccessCode = "karol910";
