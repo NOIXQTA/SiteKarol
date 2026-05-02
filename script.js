@@ -13,13 +13,21 @@ const defaultAvailabilityByWeekday = {
   6: ["10:00", "12:30", "14:00"],
 };
 
-const workImageIds = [2, 6, 8, 9, 10, 14, 16, 17, 18];
-
-const workImages = workImageIds.map((imageId, index) => ({
-  file: `fotos trabalho/${imageId}.jpeg`,
-  alt: `Photo du travail ${String(index + 1).padStart(2, "0")}`,
-  label: `Photo ${String(index + 1).padStart(2, "0")}`,
-}));
+const workImages = [
+  {
+    file: "fotos trabalho/sas.jpeg",
+    alt: "Shadow Effet naturel",
+    label: "Shadow Effet naturel",
+    description: "Un effet naturel qui dure jusqu'a 1 an.",
+    contained: true,
+  },
+  ...[2, 6, 8, 9, 10, 14, 16, 17, 18].map((imageId, index) => ({
+    file: `fotos trabalho/${imageId}.jpeg`,
+    alt: `Photo du travail ${String(index + 2).padStart(2, "0")}`,
+    label: `Photo ${String(index + 2).padStart(2, "0")}`,
+    description: "Photo reelle du travail de la professionnelle.",
+  })),
+];
 
 const catalogGrid = document.querySelector("#catalog-grid");
 const galleryShell = document.querySelector("#gallery-shell");
@@ -63,12 +71,12 @@ function renderCatalog() {
   catalogGrid.innerHTML = workImages
     .map(
       (item) => `
-        <article class="catalog-card">
+        <article class="catalog-card${item.contained ? " is-contained" : ""}">
           <figure>
             <img src="${encodeURI(item.file)}" alt="${item.alt}" loading="lazy" />
             <figcaption>
               <strong>${item.label}</strong>
-              <span>Photo reelle du travail de la professionnelle.</span>
+              <span>${item.description}</span>
             </figcaption>
           </figure>
         </article>
