@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Elegance | Espace de Reservation</title>
+    <meta
+      name="description"
+      content="Espace securise client et administrateur pour les reservations, la gestion des creneaux et la confirmation WhatsApp."
+    />
+    <link rel="icon" type="image/jpeg" href="fotos trabalho/13.jpeg" />
+    <link rel="apple-touch-icon" href="fotos trabalho/13.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portal.css" />
+  </head>
+  <body>
+    <div class="portal-aura" aria-hidden="true"></div>
+
+    <header class="portal-topbar">
+      <a class="portal-brand" href="/">
+        <img src="fotos trabalho/13.jpeg" alt="Logo Studio Elegance" />
+        <span>
+          <strong>Studio Elegance</strong>
+          <small>Espace de reservation</small>
+        </span>
+      </a>
+
+      <div class="portal-topbar-actions">
+        <a class="ghost-link" href="/">Retour au site</a>
+        <button class="button button-secondary is-hidden" id="logout-button" type="button">
+          Deconnexion
+        </button>
+      </div>
+    </header>
+
+    <main class="portal-shell">
+      <section class="portal-hero">
+        <div class="portal-hero-copy">
+          <p class="eyebrow">Reservation securisee</p>
+          <h1>Clients et administrateurs disposent chacun de leur propre espace.</h1>
+          <p>
+            Le systeme gere l'authentification, les creneaux disponibles, les
+            rendez-vous confirmes et le blocage automatique des horaires deja pris.
+          </p>
+        </div>
+
+        <aside class="portal-hero-panel">
+          <p class="eyebrow">Fonctions incluses</p>
+          <ul class="hero-feature-list">
+            <li>Connexion securisee avec mot de passe chiffre</li>
+            <li>Agenda mis a jour automatiquement</li>
+            <li>Panneau administrateur pour gerer les creneaux</li>
+            <li>Confirmation WhatsApp preparee cote serveur</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="auth-section" id="auth-section">
+        <div class="auth-card">
+          <div class="auth-tabs">
+            <button class="auth-tab is-active" type="button" data-auth-view="login">
+              Connexion
+            </button>
+            <button class="auth-tab" type="button" data-auth-view="register">
+              Creer un compte
+            </button>
+          </div>
+
+          <form class="auth-form" id="login-form">
+            <label>
+              Email
+              <input type="email" name="email" placeholder="vous@exemple.com" required />
+            </label>
+            <label>
+              Mot de passe
+              <input type="password" name="password" placeholder="Minimum 8 caracteres" required />
+            </label>
+            <button class="button button-primary" type="submit">Se connecter</button>
+          </form>
+
+          <form class="auth-form is-hidden" id="register-form">
+            <label>
+              Nom complet
+              <input type="text" name="name" placeholder="Votre nom complet" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="vous@exemple.com" required />
+            </label>
+            <label>
+              WhatsApp
+              <input type="tel" name="phone" placeholder="+351 910 221 393" required />
+            </label>
+            <label>
+              Mot de passe
+              <input type="password" name="password" placeholder="Minimum 8 caracteres" required />
+            </label>
+            <button class="button button-primary" type="submit">Creer mon compte</button>
+          </form>
+
+          <p class="auth-feedback is-hidden" id="auth-feedback" role="alert"></p>
+          <p class="auth-note" id="admin-hint"></p>
+        </div>
+      </section>
+
+      <section class="dashboard-section is-hidden" id="client-dashboard">
+        <div class="dashboard-header">
+          <div>
+            <p class="eyebrow">Espace client</p>
+            <h2 id="client-greeting">Bonjour</h2>
+            <p>Visualisez les disponibilites, choisissez un creneau et confirmez votre rendez-vous.</p>
+          </div>
+
+          <div class="dashboard-actions">
+            <button class="button button-secondary" id="refresh-client-data" type="button">
+              Actualiser
+            </button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Disponibilites</p>
+                <h3>Creneaux disponibles</h3>
+              </div>
+              <span class="badge" id="available-slot-count">0 disponibles</span>
+            </div>
+            <div class="slot-groups" id="client-slot-groups"></div>
+          </section>
+
+          <section class="dashboard-card booking-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Confirmation</p>
+                <h3>Confirmer un rendez-vous</h3>
+              </div>
+            </div>
+
+            <div class="selected-slot-box" id="selected-slot-box">
+              Aucun creneau selectionne.
+            </div>
+
+            <form class="stack-form" id="client-booking-form">
+              <label>
+                Prestation
+                <select name="service" id="client-service-select" required></select>
+              </label>
+              <label>
+                Lieu
+                <select name="location" id="client-location-select" required></select>
+              </label>
+              <label>
+                WhatsApp
+                <input type="tel" name="phone" id="client-phone-input" required />
+              </label>
+              <label>
+                Notes
+                <textarea name="notes" rows="4" placeholder="Ajoutez un detail si besoin."></textarea>
+              </label>
+              <button class="button button-primary" type="submit">Confirmer ce rendez-vous</button>
+            </form>
+
+            <p class="inline-feedback is-hidden" id="client-booking-feedback" role="alert"></p>
+          </section>
+        </div>
+
+        <section class="dashboard-card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Mes rendez-vous</p>
+              <h3>Historique et confirmations</h3>
+            </div>
+          </div>
+          <div class="appointment-list" id="client-appointments"></div>
+        </section>
+      </section>
+
+      <section class="dashboard-section is-hidden" id="admin-dashboard">
+        <div class="dashboard-header">
+          <div>
+            <p class="eyebrow">Administration</p>
+            <h2 id="admin-greeting">Panneau administrateur</h2>
+            <p>Gerez les creneaux, les reservations et l'etat complet de l'agenda.</p>
+          </div>
+
+          <div class="dashboard-actions">
+            <button class="button button-secondary" id="refresh-admin-data" type="button">
+              Actualiser
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-stats" id="admin-stats"></div>
+
+        <div class="dashboard-grid">
+          <section class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Creneaux</p>
+                <h3>Creer des horaires disponibles</h3>
+              </div>
+            </div>
+
+            <form class="stack-form" id="slot-create-form">
+              <label>
+                Date
+                <input type="date" name="date" required />
+              </label>
+              <label>
+                Horaires
+                <input
+                  type="text"
+                  name="times"
+                  placeholder="09:00, 10:30, 14:00"
+                  required
+                />
+              </label>
+              <label>
+                Note interne
+                <input type="text" name="note" placeholder="Facultatif" />
+              </label>
+              <button class="button button-primary" type="submit">Ajouter les creneaux</button>
+            </form>
+
+            <p class="inline-feedback is-hidden" id="slot-create-feedback" role="alert"></p>
+          </section>
+
+          <section class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Liste des creneaux</p>
+                <h3>Modifier ou supprimer</h3>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Etat</th>
+                    <th>Note</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-slots-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <section class="dashboard-card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Rendez-vous</p>
+              <h3>Gerer, annuler ou reprogrammer</h3>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Contact</th>
+                  <th>Date</th>
+                  <th>Heure</th>
+                  <th>Prestation</th>
+                  <th>Lieu</th>
+                  <th>Etat</th>
+                  <th>Reprogrammer</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-appointments-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="portal.js"></script>
+  </body>
+</html>

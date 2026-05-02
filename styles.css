@@ -1,0 +1,1186 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-1: #170f16;
+  --bg-2: #311827;
+  --bg-3: #8b4d4b;
+  --bg-4: #f2d7c4;
+  --surface: #fff9f5;
+  --surface-strong: #ffffff;
+  --surface-dark: #22141d;
+  --text: #1b1417;
+  --muted: #685a61;
+  --line: rgba(27, 20, 23, 0.08);
+  --accent: #a34f4a;
+  --accent-strong: #7e332f;
+  --accent-soft: #f3ddd2;
+  --gold: #d4a465;
+  --success: #1e8f64;
+  --danger: #7c6f75;
+  --shadow-xl: 0 34px 90px rgba(17, 10, 15, 0.24);
+  --shadow-lg: 0 18px 45px rgba(17, 10, 15, 0.16);
+  --shadow-sm: 0 10px 24px rgba(17, 10, 15, 0.09);
+  --radius-xl: 38px;
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(242, 215, 196, 0.18), transparent 22%),
+    radial-gradient(circle at top right, rgba(163, 79, 74, 0.2), transparent 18%),
+    linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 26%, var(--bg-3) 66%, var(--bg-4) 100%);
+  background-attachment: fixed;
+}
+
+.page-aura {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 32%),
+    url("fotos trabalho/18.jpeg"),
+    url("background/ft1.jpg"),
+    url("background/ft2.jpg");
+  background-position: center, center, left center, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: cover, min(1400px, 100vw), min(720px, 52vw), min(520px, 34vw);
+  mix-blend-mode: soft-light;
+  opacity: 0.28;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at 14% 14%, rgba(255, 255, 255, 0.18), transparent 14%),
+    radial-gradient(circle at 78% 10%, rgba(212, 164, 101, 0.12), transparent 12%),
+    radial-gradient(circle at 82% 72%, rgba(255, 255, 255, 0.12), transparent 16%);
+}
+
+body::after {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.site-header,
+.page-shell {
+  width: calc(100% - 20px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-header {
+  padding-top: 16px;
+}
+
+.topbar,
+.hero,
+.section,
+.catalog-card,
+.professional-photo-card,
+.info-card,
+.rdv-card,
+.booking-note,
+.booking-form,
+.calendar-card,
+.day-slots-panel {
+  box-shadow: var(--shadow-xl);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(34, 20, 29, 0.82), rgba(53, 27, 40, 0.8));
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text strong,
+.hero-copy h1,
+.hero-panel h2,
+.section-heading h2,
+.info-card h3,
+.rdv-card h3,
+.calendar-title-wrap h3,
+.day-slots-panel h3 {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: -0.03em;
+}
+
+.brand-text strong {
+  color: #fff6ef;
+  font-size: 1rem;
+}
+
+.brand-text small {
+  font-size: 0.74rem;
+  color: rgba(255, 246, 239, 0.72);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+  margin-top: 16px;
+  min-height: 64vh;
+  padding: 34px;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(145deg, rgba(255, 248, 243, 0.86), rgba(248, 228, 216, 0.74)),
+    url("fotos trabalho/14.jpeg"),
+    url("background/transferir (7).jpg");
+  background-position: center, right center, right 30px top 26px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, min(460px, 30vw), min(180px, 12vw);
+  backdrop-filter: blur(10px);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: -120px;
+  right: -100px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(163, 79, 74, 0.2), transparent 68%);
+}
+
+.hero::after {
+  bottom: -90px;
+  left: -50px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(212, 164, 101, 0.2), transparent 68%);
+}
+
+.hero-copy {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.eyebrow,
+.card-label {
+  margin: 0 0 14px;
+  color: var(--accent-strong);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero-copy,
+.hero-panel,
+.section,
+.calendar-card,
+.day-slots-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.85rem, 5.1vw, 5.1rem);
+  line-height: 0.88;
+  color: #1e1418;
+}
+
+.hero-text,
+.hero-panel p,
+.section-heading p,
+.info-card p,
+.rdv-card p,
+.booking-output p,
+.booking-output ul,
+.selected-slot-card,
+.agenda-meta,
+.agenda-empty {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.hero-text {
+  max-width: 62ch;
+  margin-top: 18px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #6d3137;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff7f1;
+  box-shadow: 0 16px 32px rgba(126, 51, 47, 0.28);
+}
+
+.button-secondary {
+  background: #fff7f1;
+  color: #22141d;
+  border: 1px solid rgba(34, 20, 29, 0.08);
+}
+
+.hero-badges,
+.service-chip-grid,
+.hero-stats,
+.agenda-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-badges {
+  margin-top: 22px;
+}
+
+.hero-badges span,
+.service-chip-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.hero-badges span {
+  background: #1f151b;
+  color: #fff7f1;
+}
+
+.hero-panel {
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+  padding: 20px;
+  border-radius: 30px;
+  color: #fff7f1;
+  background:
+    linear-gradient(160deg, rgba(36, 20, 30, 0.86) 0%, rgba(77, 37, 51, 0.82) 55%, rgba(139, 77, 75, 0.8) 100%);
+  backdrop-filter: blur(12px);
+}
+
+.hero-panel .eyebrow,
+.hero-panel p {
+  color: rgba(255, 247, 241, 0.78);
+}
+
+.hero-panel h2 {
+  margin: 0;
+  font-size: clamp(1.72rem, 2.9vw, 2.45rem);
+  line-height: 0.92;
+}
+
+.personal-mini-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 12px;
+  min-height: 250px;
+}
+
+.personal-mini-card,
+.personal-ribbon-card,
+.booking-portrait {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+.personal-mini-card {
+  min-height: 116px;
+}
+
+.personal-mini-card.is-tall {
+  grid-row: span 2;
+  min-height: 250px;
+}
+
+.personal-mini-card:nth-child(2) {
+  transform: translateY(8px);
+}
+
+.personal-mini-card:nth-child(3) {
+  transform: translateY(-4px);
+}
+
+.personal-mini-card img,
+.personal-ribbon-card img,
+.booking-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-chip-grid span {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff7f1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-stats article {
+  min-width: 120px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 1.08rem;
+  color: #fff7f1;
+}
+
+.hero-stats span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.84rem;
+  color: rgba(255, 247, 241, 0.72);
+}
+
+.page-shell {
+  margin-top: 22px;
+  padding-bottom: 34px;
+}
+
+.section {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 249, 245, 0.78) 0%, rgba(255, 253, 251, 0.82) 100%),
+    url("background/transferir (6).jpg"),
+    url("background/ft2.jpg");
+  background-position: center, right 20px bottom 18px, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: cover, min(130px, 10vw), min(320px, 18vw);
+  backdrop-filter: blur(10px);
+}
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  max-width: 14ch;
+  font-size: clamp(1.85rem, 3.8vw, 3rem);
+  line-height: 0.92;
+}
+
+.section-heading p {
+  max-width: 68ch;
+  margin: 14px 0 0;
+  font-size: 0.92rem;
+}
+
+.section-heading-compact h2 {
+  max-width: 15ch;
+}
+
+.professional-layout {
+  display: grid;
+  grid-template-columns: 0.76fr 1.24fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.professional-photo-card,
+.info-card,
+.rdv-card,
+.booking-note,
+.booking-form,
+.calendar-card,
+.day-slots-panel,
+.catalog-card,
+.manager-form {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.professional-photo-card {
+  overflow: hidden;
+}
+
+.professional-photo-card img {
+  height: 100%;
+  min-height: 620px;
+  object-fit: cover;
+}
+
+.professional-copy {
+  display: grid;
+  gap: 16px;
+}
+
+.personal-ribbon {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 12px;
+}
+
+.personal-ribbon-card {
+  min-height: 170px;
+}
+
+.personal-ribbon-card:first-child {
+  transform: rotate(-1.5deg);
+}
+
+.personal-ribbon-card:last-child {
+  transform: translateY(18px) rotate(1.8deg);
+}
+
+.info-card {
+  padding: 16px;
+}
+
+.info-card h3,
+.rdv-card h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.3vw, 1.86rem);
+  line-height: 0.96;
+}
+
+.feature-card {
+  background:
+    linear-gradient(135deg, rgba(255, 245, 239, 0.84), rgba(255, 232, 218, 0.78)),
+    url("fotos trabalho/17.jpeg");
+  background-position: center, right center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, min(220px, 18vw);
+}
+
+.feature-list {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.accent-card {
+  color: #fff7f1;
+  background: linear-gradient(145deg, #24141e, #5a2937);
+}
+
+.accent-card .eyebrow,
+.accent-card p {
+  color: rgba(255, 247, 241, 0.78);
+}
+
+.work-header {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.work-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.gallery-shell {
+  position: relative;
+}
+
+.gallery-shell.is-collapsed::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 150px;
+  background: linear-gradient(180deg, rgba(255, 249, 245, 0), rgba(255, 249, 245, 1));
+  pointer-events: none;
+}
+
+.gallery-shell.is-collapsed .catalog-grid .catalog-card:nth-child(n + 5) {
+  display: none;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.catalog-card {
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.catalog-card figure {
+  margin: 0;
+}
+
+.catalog-card img {
+  aspect-ratio: 0.92 / 1;
+  object-fit: cover;
+}
+
+.catalog-card figcaption {
+  padding: 12px 14px 16px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.catalog-card strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.catalog-card span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.agenda-section {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 20px;
+  align-items: start;
+  background:
+    linear-gradient(135deg, #fff4ec 0%, #ffe8dc 52%, #fffaf7 100%);
+}
+
+.agenda-copy {
+  position: sticky;
+  top: 14px;
+}
+
+.agenda-legend {
+  margin-top: 20px;
+}
+
+.agenda-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff7f1;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.84rem;
+}
+
+.agenda-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--success);
+  display: inline-block;
+}
+
+.agenda-legend .is-busy {
+  background: var(--danger);
+}
+
+.calendar-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+}
+
+.calendar-card,
+.day-slots-panel {
+  padding: 14px;
+}
+
+.calendar-card {
+  background: linear-gradient(180deg, #fffdfb, #fff5ef);
+}
+
+.calendar-toolbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.calendar-title-wrap {
+  text-align: center;
+}
+
+.calendar-title-wrap .eyebrow {
+  margin-bottom: 8px;
+}
+
+.calendar-title-wrap h3,
+.day-slots-panel h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.46rem, 2.3vw, 1.96rem);
+  line-height: 0.96;
+}
+
+.calendar-nav {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid rgba(27, 20, 23, 0.08);
+  border-radius: 999px;
+  background: #fffaf7;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendar-nav:hover,
+.calendar-nav:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calendar-weekdays {
+  margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.calendar-day {
+  min-height: 84px;
+  padding: 10px;
+  border: 1px solid rgba(27, 20, 23, 0.08);
+  border-radius: 18px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.calendar-day:hover,
+.calendar-day:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-day.is-other-month {
+  opacity: 0.4;
+}
+
+.calendar-day.is-today {
+  border-color: rgba(163, 79, 74, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(163, 79, 74, 0.18);
+}
+
+.calendar-day.is-selected {
+  border-color: rgba(30, 143, 100, 0.4);
+  background: linear-gradient(180deg, #f3fff8, #ecfaf3);
+}
+
+.calendar-day.is-unavailable {
+  background: linear-gradient(180deg, #fff6f5, #f9ebea);
+}
+
+.calendar-day-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.calendar-day-number {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.calendar-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--success);
+  flex: 0 0 auto;
+}
+
+.calendar-day.is-unavailable .calendar-dot {
+  background: #c85252;
+}
+
+.calendar-day-note {
+  margin-top: 14px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.day-slots-panel {
+  background: linear-gradient(160deg, #22141d 0%, #4d2533 100%);
+  color: #fff7f1;
+}
+
+.day-slots-panel .eyebrow,
+.day-slots-panel .agenda-meta {
+  color: rgba(255, 247, 241, 0.78);
+}
+
+.day-slots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.agenda-slot {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.84rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.agenda-slot.is-available {
+  background: linear-gradient(135deg, #1e8f64, #137450);
+  cursor: pointer;
+}
+
+.agenda-slot.is-available:hover,
+.agenda-slot.is-available:focus-visible,
+.agenda-slot.is-available.is-selected {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(30, 143, 100, 0.24);
+}
+
+.agenda-slot.is-busy {
+  background: linear-gradient(135deg, #d55858, #b83f3f);
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.agenda-meta {
+  margin: 10px 0 0;
+  font-size: 0.84rem;
+}
+
+.agenda-empty {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 247, 241, 0.82);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 18px;
+}
+
+.booking-note,
+.booking-form {
+  padding: 14px;
+}
+
+.booking-portrait {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  min-height: 220px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 244, 0.2), rgba(255, 248, 244, 0.06)),
+    rgba(255, 255, 255, 0.1);
+}
+
+.location-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.rdv-card {
+  padding: 14px;
+  background: linear-gradient(135deg, rgba(255, 248, 244, 0.82), rgba(255, 240, 230, 0.76));
+}
+
+.rdv-card p {
+  margin: 12px 0 0;
+}
+
+.selected-slot-card {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #20131b, #4a2634);
+  color: #fff7f1;
+}
+
+.selected-slot-card .eyebrow {
+  color: rgba(255, 247, 241, 0.7);
+}
+
+.selected-slot-card strong {
+  display: block;
+  color: #fff7f1;
+  font-size: 0.9rem;
+}
+
+.booking-output {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #fff8f4;
+}
+
+.booking-output ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.preview-cta {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.booking-error {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fff0f0;
+  border: 1px solid rgba(213, 88, 88, 0.24);
+  color: #b83f3f;
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffdfb;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  outline: none;
+  border-color: rgba(163, 79, 74, 0.4);
+  box-shadow: 0 0 0 4px rgba(163, 79, 74, 0.1);
+}
+
+.booking-form textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.owner-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.manager-form {
+  display: grid;
+  gap: 16px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+}
+
+.manager-header h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.42rem, 2.2vw, 1.86rem);
+  line-height: 0.96;
+}
+
+.weekday-config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.manager-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.manager-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffdfb;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.manager-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.manager-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.manager-feedback {
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #eef9f3;
+  border: 1px solid rgba(30, 143, 100, 0.18);
+  color: #196d4d;
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 1180px) {
+  .hero,
+  .professional-layout,
+  .work-header,
+  .agenda-section,
+  .booking-layout,
+  .calendar-shell,
+  .owner-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-copy {
+    position: static;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .work-actions {
+    justify-content: flex-start;
+  }
+
+  .personal-mini-grid,
+  .personal-ribbon {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .personal-mini-card.is-tall {
+    grid-row: auto;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .page-shell {
+    width: calc(100% - 12px);
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero,
+  .section,
+  .booking-note,
+  .booking-form,
+  .calendar-card,
+  .day-slots-panel {
+    padding: 22px;
+  }
+
+  .catalog-grid,
+  .booking-form,
+  .weekday-config-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-mini-grid,
+  .personal-ribbon {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-mini-card,
+  .personal-mini-card.is-tall,
+  .personal-ribbon-card,
+  .booking-portrait {
+    min-height: 220px;
+    transform: none;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    gap: 8px;
+  }
+
+  .calendar-day {
+    min-height: 84px;
+    padding: 10px;
+  }
+
+  .gallery-shell.is-collapsed .catalog-grid .catalog-card:nth-child(n + 4) {
+    display: none;
+  }
+}
